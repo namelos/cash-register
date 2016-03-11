@@ -9,12 +9,15 @@
 npm install
 npm run
 # this is debug a mode with browser sync
-# or you can build as well
+# localhost:3000 would be avaiable in browser
+# and localhost:3001 for debugging
+# or you can just build as well
 ```
 
 #### Building
 ```
 npm run build
+# then visit dist/index.html
 ```
 
  
