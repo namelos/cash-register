@@ -3,6 +3,8 @@
 
 #### A Cash Register Demo For Thoughtworks Test
 
+[Here's a direct link on gh-pages](http://namelos.github.io/cash-register/)
+
 #### How to run
 
 ```bash
@@ -15,7 +17,7 @@ npm run
 ```
 
 #### Building
-```
+```bash
 npm run build
 # then visit dist/index.html
 ```
@@ -26,8 +28,6 @@ npm run build
 ```
 npm test
 ```
-
-[Here's a direct link on gh-pages](http://namelos.github.io/cash-register/)
 
 This repository is mainly for thoughtworks test. 
 
