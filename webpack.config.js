@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const BrowserSync = require('browser-sync-webpack-plugin')
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: './src/index',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -11,10 +11,16 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new BrowserSync({
-      host: 'localhost',
-      port: 3001,
-      proxy: 'http://localhost:3000'
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
     })
   ],
   module: {

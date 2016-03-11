@@ -8,10 +8,19 @@
 ```bash
 npm install
 npm run
+# this is debug a mode with browser sync
+# or you can build as well
 ```
 
+#### Building
+```
+
+```
+
+ 
 #### Testing
 
 ```
 npm test
 ```
+

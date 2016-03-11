@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
-const config = require('./webpack.config')
+const config = require('./webpack.config.dev')
 const app = express()
 
 app.use(require('webpack-dev-middleware')(webpack(config), {
