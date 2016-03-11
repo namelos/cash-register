@@ -34,3 +34,5 @@ This repository is mainly for thoughtworks test.
 It is a Cycle.js App which is mostly based on rxjs.
 
 Used some immutable / lazy evaluation feature to keep the code simple.
+
+Main logic stays in `src/model.js`, configurations and data are in `src/input.json` `src/config.json` 
