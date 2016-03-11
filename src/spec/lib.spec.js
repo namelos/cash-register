@@ -1,4 +1,4 @@
-import { parseString, calculate95Percent } from '../lib'
+import { parseString, calc95Percent } from '../lib'
 import { expect } from 'chai'
 
 describe('parseString', () => {
@@ -10,4 +10,4 @@ describe('parseString', () => {
 
 describe('calculate95Percent', () =>
   it('should discount 95% correctly', () =>
-    expect()))
+    expect(calc95Percent(10, 10)).to.equal(95)))

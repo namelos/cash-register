@@ -8,3 +8,7 @@ export const parseString = item => {
   const quantity = parseInt(pair[1] || 1)
   return [category, quantity]
 }
+
+// calculate 95% discount
+export const calc95Percent = (price, quantity) =>
+  price * quantity * 0.95
