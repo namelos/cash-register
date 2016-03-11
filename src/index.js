@@ -1,3 +1,2 @@
-import { add } from 'ramda'
-
-export const sum = add
+import input from './input.json'
+import config from './config.json'
