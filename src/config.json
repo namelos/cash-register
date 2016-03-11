@@ -1,27 +1,95 @@
 {
-  "ITEM000001": {
-    "name": "羽毛球",
-    "price": 1,
-    "unit": "个",
-    "discounts": [
-      "买二赠一",
-      "九五折"
-    ]
+  "config1": {
+    "ITEM000001": {
+      "name": "羽毛球",
+      "price": 1,
+      "unit": "个",
+      "discounts": [
+        "买二赠一"
+      ]
+    },
+    "ITEM000003": {
+      "name": "苹果",
+      "price": 5.5,
+      "unit": "斤",
+      "discounts": []
+    },
+    "ITEM000005": {
+      "name": "可口可乐",
+      "price": 3,
+      "unit": "瓶",
+      "discounts": [
+        "买二赠一"
+      ]
+    }
   },
-  "ITEM000003": {
-    "name": "苹果",
-    "price": 5.5,
-    "unit": "斤",
-    "discounts": [
-      "九五折"
-    ]
+  "config2": {
+    "ITEM000001": {
+      "name": "羽毛球",
+      "price": 1,
+      "unit": "个",
+      "discounts": []
+    },
+    "ITEM000003": {
+      "name": "苹果",
+      "price": 5.5,
+      "unit": "斤",
+      "discounts": []
+    },
+    "ITEM000005": {
+      "name": "可口可乐",
+      "price": 3,
+      "unit": "瓶",
+      "discounts": []
+    }
   },
-  "ITEM000005": {
-    "name": "可口可乐",
-    "price": 3,
-    "unit": "瓶",
-    "discounts": [
-      "买二赠一"
-    ]
+  "config3": {
+    "ITEM000001": {
+      "name": "羽毛球",
+      "price": 1,
+      "unit": "个",
+      "discounts": []
+    },
+    "ITEM000003": {
+      "name": "苹果",
+      "price": 5.5,
+      "unit": "斤",
+      "discounts": [
+        "九五折"
+      ]
+    },
+    "ITEM000005": {
+      "name": "可口可乐",
+      "price": 3,
+      "unit": "瓶",
+      "discounts": []
+    }
+  },
+  "config4": {
+    "ITEM000001": {
+      "name": "羽毛球",
+      "price": 1,
+      "unit": "个",
+      "discounts": [
+        "买二赠一",
+        "九五折"
+      ]
+    },
+    "ITEM000003": {
+      "name": "苹果",
+      "price": 5.5,
+      "unit": "斤",
+      "discounts": [
+        "九五折"
+      ]
+    },
+    "ITEM000005": {
+      "name": "可口可乐",
+      "price": 3,
+      "unit": "瓶",
+      "discounts": [
+        "买二赠一"
+      ]
+    }
   }
 }

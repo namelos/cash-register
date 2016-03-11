@@ -26,8 +26,6 @@ export const parseString = item => {
   return [category, quantity]
 }
 
-export const equal95Percent = equals([_95Percent])
-
 export const b2G1FQuantity = quantity =>
   parseInt(Decimal(quantity).div(2 + 1))
 
@@ -65,6 +63,12 @@ export const formulae = cond([
   [equalsSet(new Set([_95Percent])), always(calc95Percent)],
   [T, always(multiply)]
 ])
+
+// check if satisfy discount conditions
+export const equal95Percent = equals([_95Percent])
+
+export const equalB2G1F = discounts =>
+  new Set(discounts).has(b2G1F)
 
 // change array to set for unordered equality
 export const getFormulae = discount =>

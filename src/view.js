@@ -8,17 +8,28 @@ const boldDivider = <p>**********************</p>
 
 export const renderList = list =>
   list.map(({ name, quantity, unit, price, subtotal, saved }) => <li>
-    名称：{name}，数量：{quantity}{unit}，单价：{price}(元)，小计：{subtotal}(元){ saved && `，节省${saved}(元)` }
+    名称：{name}，数量：{quantity}{unit}，单价：{price}(元)，小计：{subtotal}(元){
+    saved && `，节省${saved}(元)`}
   </li>)
 
-export const renderBonus = bonus =>
-  bonus.map(({ name, b2G1F, unit }) => do {
-    if (b2G1F)
-      <li>名称：{ name }，数量：{ b2G1F }{ unit }</li>
-  })
+
+export const renderBonusList = bonus =>
+  bonus.map(({ name, b2G1FQuantity, unit }) =>
+    <li>名称：{ name }，数量：{ b2G1FQuantity }{ unit }</li>)
+
+export const renderBonus = bonus => do {
+  if (bonus.length)
+    <div>
+      <p>买二赠一商品：</p>
+      <ul>{ renderBonusList(bonus) }</ul>
+      { divider }
+    </div>
+}
 
 export const renderTotalSaved = totalSaved => do {
-  if (totalSaved)
+  if (totalSaved === "0.00")
+    null
+  else
     <p>节省：{ totalSaved }(元)</p>
 }
 
@@ -27,9 +38,7 @@ export default data$ =>
     <header>{ header }</header>
     <ul>{ renderList(list) }</ul>
     { divider }
-    <p>买二赠一商品：</p>
-    <ul>{ renderBonus(bonus) }</ul>
-    { divider }
+    { renderBonus(bonus) }
     <p>总计：{ total }(元)</p>
     { renderTotalSaved(totalSaved) }
     { boldDivider }

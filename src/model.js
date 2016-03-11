@@ -1,6 +1,6 @@
 import { Observable } from 'rx'
 import { contains, head, last, prop, __ } from 'ramda'
-import { parseString, equal95Percent, sum, subtract, multiply,getFormulae, b2G1FQuantity, toFixed2 } from './lib'
+import { parseString, equal95Percent, equalB2G1F, sum, subtract, multiply,getFormulae, b2G1FQuantity, toFixed2 } from './lib'
 const { of, from, zip, merge, combineLatest } = Observable
 /*
     Observables are immutable lazy stream monad generic.
@@ -31,8 +31,6 @@ export default (input, config) => {
     (price, quantity, formula) => formula(price, quantity)).map(toFixed2)
   const subtotalWithoutDiscount$ = zip(quantity$, price$, multiply)
   const saved$ = zip(subtotalWithoutDiscount$, subtotal$, subtract).map(toFixed2)
-  // const discount95$ = discounts$.filter(equal95Percent)
-  // const saved95$ = zip(saved$, discount95$, saved => saved)
 
   const list$ = zip(name$, quantity$, unit$, price$, subtotal$, saved$, discounts$,
     (name, quantity, unit, price, subtotal, saved, discounts) => do {
@@ -41,10 +39,12 @@ export default (input, config) => {
     else
       ({ name, quantity, unit, price, subtotal })
   }).toArray()
-  
-  const b2G1F$ = quantity$.map(b2G1FQuantity)
-  const bonus$ = zip(name$, b2G1F$, unit$,
-    (name, b2G1F, unit) => ({ name, b2G1F, unit })).toArray()
+
+  const b2G1F$ = discounts$.filter(equalB2G1F)
+  const b2G1FQuantity$ = quantity$.map(b2G1FQuantity)
+  const bonus$ = zip(name$, b2G1FQuantity$, unit$, b2G1F$,
+    (name, b2G1FQuantity, unit) =>
+      ({ name, b2G1FQuantity, unit })).toArray()
 
   const total$ = subtotal$.reduce(sum).map(toFixed2)
   const totalSaved$ = saved$.reduce(sum).map(toFixed2)
