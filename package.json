@@ -4,6 +4,7 @@
   "description": "cash register demo for thoughtworks",
   "main": "dev-server.js",
   "scripts": {
+    "start": "node dev-server.js",
     "test": "mocha --compilers js:babel-core/register src/spec/*spec.js"
   },
   "repository": {
