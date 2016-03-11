@@ -5,17 +5,8 @@ import input from './input.json'
 import config from './config.json'
 import model from './model'
 import view from './view'
-const { from, of } = Observable
+const { from, merge } = Observable
 
-// const main = () => {
-//   return {
-//     DOM: from([1, 2, 3]).map(x => <div>{ x }</div>)
-//   }
-// }
-//
-// run(main, {
-//   DOM: makeDOMDriver('#app')
-// })
+const main = () => ({ DOM: view(model(input, config)) })
 
-model(input, config)
-  .subscribe(console::console.log)
+run(main, { DOM: makeDOMDriver('#app') })

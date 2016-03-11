@@ -26,6 +26,7 @@
   "dependencies": {
     "@cycle/core": "^6.0.3",
     "@cycle/dom": "^9.1.0",
+    "decimal": "0.0.2",
     "json-loader": "^0.5.4",
     "ramda": "^0.19.1",
     "rx": "^4.1.0"
