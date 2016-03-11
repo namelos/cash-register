@@ -24,4 +24,10 @@ npm run build
 npm test
 ```
 
-[direct link](http://namelos.github.io/cash-register/)
+[Here's a direct link on gh-pages](http://namelos.github.io/cash-register/)
+
+This repository is mainly for thoughtworks test. 
+
+It is a Cycle.js App which is mostly based on rxjs.
+
+Used some immutable / lazy evaluation feature to keep the code simple.
