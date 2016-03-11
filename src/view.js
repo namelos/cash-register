@@ -6,6 +6,7 @@ const divider = <p>----------------------</p>
 
 const boldDivider = <p>**********************</p>
 
+// render list
 export const renderList = list =>
   list.map(({ name, quantity, unit, price, subtotal, saved }) => <li>
     名称：{name}，数量：{quantity}{unit}，单价：{price}(元)，小计：{subtotal}(元){
@@ -13,6 +14,7 @@ export const renderList = list =>
   </li>)
 
 
+// render buy two get one list
 export const renderBonusList = bonus =>
   bonus.map(({ name, b2G1FQuantity, unit }) =>
     <li>名称：{ name }，数量：{ b2G1FQuantity }{ unit }</li>)
@@ -33,6 +35,7 @@ export const renderTotalSaved = totalSaved => do {
     <p>节省：{ totalSaved }(元)</p>
 }
 
+// root view stream, accept stream data
 export default data$ =>
   data$.map(({ list, bonus, total, totalSaved }) => <div>
     <header>{ header }</header>
