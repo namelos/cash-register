@@ -12,13 +12,16 @@ export const parseString = item => {
   return [category, quantity]
 }
 
+export const b2G1FQuantity = quantity =>
+  parseInt(quantity / (2 + 1))
+
 // calculate 95% discount
 export const calc95Percent = (price, quantity) =>
   price * quantity * 0.95
 
 // calculate buy two get one free discount
 export const calcB2G1F = (price, quantity) =>
-  price * (quantity - parseInt(quantity / (2 + 1)))
+  price * (quantity - b2G1FQuantity(quantity))
 
 // when two discounts happens both
 export const calcBoth = (price, quantity) => {
@@ -28,11 +31,24 @@ export const calcBoth = (price, quantity) => {
     return calc95Percent(price, quantity)
 }
 
+// curried set equality checking for following pattern matching
+export const equalsSet = setA => setB => {
+  if (setA.size !== setB.size)
+    return false
+  for (var a of setA)
+    if (!setB.has(a))
+      return false
+  return true
+}
+
 // discount pattern matching function
-export const getFormulae = cond([
-  [equals([b2G1F, _95Percent]), always(calcBoth)],
-  [equals([b2G1F]), always(calcB2G1F)],
-  [equals([_95Percent]), always(calc95Percent)],
+export const formulae = cond([
+  [equalsSet(new Set([b2G1F, _95Percent])), always(calcBoth)],
+  [equalsSet(new Set([b2G1F])), always(calcB2G1F)],
+  [equalsSet(new Set([_95Percent])), always(calc95Percent)],
   [T, always(multiply)]
 ])
 
+// change array to set for unordered equality
+export const getFormulae = discount =>
+  formulae(new Set(discount))

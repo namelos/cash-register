@@ -1,4 +1,4 @@
-import { parseString, _95Percent, b2G1F,
+import { parseString, _95Percent, b2G1F, equalsSet, b2G1FQuantity,
   calc95Percent, calcB2G1F, calcBoth, getFormulae } from '../lib'
 import { multiply } from 'ramda'
 import { expect } from 'chai'
@@ -9,6 +9,17 @@ describe('parseString', () => {
   it('should split "ITEM000001" as ["ITEM000001", 1]', () =>
     expect(parseString("ITEM000001")).to.eql(["ITEM000001", 1]))
 })
+
+describe('equalSet', () => {
+  it('should equal two same set', () =>
+    expect(
+      equalsSet(new Set([1, 2, 3]))(new Set([1, 3, 2]))
+    ).to.be.true)
+})
+
+describe('b2G1FQuantity', () =>
+  it('should calculate correct free quantity', () =>
+    expect(b2G1FQuantity(3))))
 
 describe('calc95Percent', () =>
   it('should discount 95% correctly', () =>
@@ -37,6 +48,9 @@ describe('getFormulae', () => {
       .to.equal(calcB2G1F(1, 3)))
   it('should buy 2 give 1 when have both discounts when larger than 2', () =>
     expect(getFormulae([b2G1F, _95Percent])(1, 3))
+      .to.equal(calcBoth(1, 3)))
+  it('should just work even swapped', () =>
+    expect(getFormulae([_95Percent, b2G1F])(1, 3))
       .to.equal(calcBoth(1, 3)))
   it('should discount 95% when smaller than 3, though have both discounts', () =>
     expect(getFormulae([_95Percent])(1, 2))

@@ -5,7 +5,7 @@ import { Observable } from 'rx'
 const { just, of } = Observable
 chai.use(chaiVirtualDOM)
 
-import { view } from '../view'
+import view from '../view'
 
 describe('view function', () => {
   it('should render right parameter', () => {
