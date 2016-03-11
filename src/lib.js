@@ -1,7 +1,7 @@
 import { multiply, cond, equals, T, always } from 'ramda'
 
-export const _95Percent = '95'
-export const b2G1F = 'b1'
+export const _95Percent = '九五折'
+export const b2G1F = '买二赠一'
 
 // parse "ITEM000002-2" as ["ITEM000002", 2]
 // or "ITEM000001" as ["ITEM000001", 1]

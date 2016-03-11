@@ -8,6 +8,11 @@ export default model = (input, config) => {
   // 将输入的数组转化为流, 将条形码字符串分割, 根据数组序对头部(商品类别category)分类支流
   const items$$ = from(input).map(parseString).groupBy(head)
 
-  //
   const category$ = items$$.flatMap(item$ => item$.map(head).last())
+  const quantity$ = items$$.flatMap(item$ => item$.map(last).reduce(add))
+  
+  const info$ = category$.map(prop(__, dict))
+  const unit$ = info$.map(prop('unit'))
+  const price$ = info$.map(prop('price'))
+  const discounts$ = info$.map(prop('discounts'))
 }

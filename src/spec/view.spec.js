@@ -1,7 +1,20 @@
 import chai, { expect } from 'chai'
 import chaiVirtualDOM from 'chai-virtual-dom'
 import { hJSX } from '@cycle/dom'
+import { Observable } from 'rx'
+const { just, of } = Observable
 chai.use(chaiVirtualDOM)
+
+import { view } from '../view'
+
+describe('view function', () => {
+  it('should render right parameter', () => {
+    const expected = <div>{ 1 }</div>
+    // const expected$ = just(1).map(() => expected)
+    const expected$ = of(<div>{ 1 }</div>)
+    expect(view(just(1))).to.exactly.look.like(expected$)
+  })
+})
 
 describe('test view', () => {
   const vtree = <div id="foo">

@@ -1,4 +1,6 @@
-import { parseString, calc95Percent, calcB2G1F, calcBoth, getFormulae } from '../lib'
+import { parseString, _95Percent, b2G1F,
+  calc95Percent, calcB2G1F, calcBoth, getFormulae } from '../lib'
+import { multiply } from 'ramda'
 import { expect } from 'chai'
 
 describe('parseString', () => {
@@ -24,4 +26,22 @@ describe('calcBoth', () => {
     expect(calcBoth(1, 3)).to.equal(2))
   it('should discount 95% when smaller than 3', () =>
     expect(calcBoth(1, 2)).to.equal(1.9))
+})
+
+describe('getFormulae', () => {
+  it('should discount 95% when only have 95% discount', () =>
+    expect(getFormulae([_95Percent])(10, 10))
+      .to.equal(calc95Percent(10, 10)))
+  it('should buy 2 give 1 free when only have buy 2 give 1 discount', () =>
+    expect(getFormulae([b2G1F])(1, 3))
+      .to.equal(calcB2G1F(1, 3)))
+  it('should buy 2 give 1 when have both discounts when larger than 2', () =>
+    expect(getFormulae([b2G1F, _95Percent])(1, 3))
+      .to.equal(calcBoth(1, 3)))
+  it('should discount 95% when smaller than 3, though have both discounts', () =>
+    expect(getFormulae([_95Percent])(1, 2))
+      .to.equal(calcBoth(1, 2)))
+  it('should just multiply price and quantity when no discounts avaiable', () =>
+    expect(getFormulae(undefined)(1, 2))
+      .to.equal(multiply(1, 2)))
 })
