@@ -14,7 +14,7 @@ npm run
 
 #### Building
 ```
-
+npm run build
 ```
 
  
@@ -24,3 +24,4 @@ npm run
 npm test
 ```
 
+[direct link](http://namelos.github.io/cash-register/)
