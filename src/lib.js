@@ -4,6 +4,7 @@ import Decimal from 'decimal'
 export const _95Percent = '九五折'
 export const b2G1F = '买二赠一'
 
+// decimal operator functions
 export const sum= (x, y) =>
   Decimal(x).add(y).toNumber()
 
@@ -24,6 +25,8 @@ export const parseString = item => {
   const quantity = parseInt(pair[1] || 1)
   return [category, quantity]
 }
+
+export const equal95Percent = equals([_95Percent])
 
 export const b2G1FQuantity = quantity =>
   parseInt(Decimal(quantity).div(2 + 1))

@@ -10,3 +10,5 @@ const { from, merge } = Observable
 const main = () => ({ DOM: view(model(input, config)) })
 
 run(main, { DOM: makeDOMDriver('#app') })
+// model(input, config)
+//   .subscribe(console::console.log)
